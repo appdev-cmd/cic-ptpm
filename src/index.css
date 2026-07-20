@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   THEME TOKENS - qa-qtdn Dark Mode (Slate lạnh có chủ đích)
+   ============================================================ */
+:root {
+  --primary-50: 242 248 252;
+  --primary-100: 212 234 247;
+  --primary-200: 182 204 216;
+  --primary-300: 113 196 239;
+  --primary-400: 57 149 184;
+  --primary-500: 0 102 140; /* Teal primary */
+  --primary-600: 0 82 115;
+  --primary-700: 0 65 90;
+  --primary-800: 0 48 71;
+  --primary-900: 0 31 48;
+
+  /* Bề mặt & chữ theo theme tối của qa-qtdn */
+  --bg-app: #0a0f1a;
+  --bg-surface: #141b2b;
+  --bg-elevated: #1b2333;
+  --bg-subtle: #111826;
+  --bg-muted: #232c3e;
+  --border: #263148;
+  --border-subtle: #33405a;
+  --txt-primary: #f3f6fb;
+  --txt-secondary: #c3cdda;
+  --txt-muted: #8896a9;
+
+  --shadow-color: 220 60% 2%;
+  --shadow-card: 0 1px 2px hsl(var(--shadow-color) / 0.4), 0 2px 8px -2px hsl(var(--shadow-color) / 0.5);
+  --shadow-pop: 0 8px 24px -4px hsl(var(--shadow-color) / 0.6), 0 16px 48px -12px hsl(var(--shadow-color) / 0.7);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg-app);
+    color: var(--txt-primary);
+    height: 100%;
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-app);
+    color: var(--txt-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    height: 100%;
+  }
+  #root {
+    height: 100%;
+  }
+  /* Tiêu đề: cân chữ + tracking chặt cho cảm giác chỉn chu */
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    letter-spacing: -0.011em;
+  }
+  /* Focus nhất quán theo màu chủ đạo - chỉ hiện khi dùng bàn phím */
+  :focus-visible {
+    outline: 2px solid rgb(var(--primary-500));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: rgb(var(--primary-500) / 0.16);
+  }
+}
+
+@layer components {
+  /* Thẻ bề mặt chuẩn - dùng chung, đảm bảo đồng bộ */
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+  }
+  /* Header ô/section: label uppercase giãn chữ */
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--txt-muted);
+  }
+}
+
+@layer utilities {
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Scrollbar mảnh, tinh tế */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 9999px;
+  border: 2px solid var(--bg-app);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--txt-muted);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
