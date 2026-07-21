@@ -168,6 +168,22 @@ graph TD
 
 ---
 
+## 💻 PHÂN BỔ VAI TRÒ FRONTEND & BACKEND TRONG QUY TRÌNH
+
+Để Developers (Frontend & Backend) dễ dàng nắm bắt vị trí công việc của mình trong vòng đời dự án, dưới đây là bảng phân rã vai trò:
+
+| Giai đoạn | Nhiệm vụ của Frontend Developer | Nhiệm vụ của Backend Developer |
+| :--- | :--- | :--- |
+| **Bước 1: Khảo sát & Phân tích** | - Tham gia họp Kick-off.<br>- Đánh giá tính khả thi kỹ thuật (technical feasibility) của các yêu cầu chức năng. | - Tham gia họp Kick-off.<br>- Tham vấn giải pháp công nghệ backend, đánh giá khả năng tích hợp bên thứ ba. |
+| **Bước 2: Thiết kế UI/UX** | - Phối hợp với Designer kiểm tra tính khả thi của giao diện (ví dụ: các hiệu ứng chuyển động, cấu trúc lưới css).<br>- Tiếp nhận link Figma Mockup & Design System. | - Chưa cần tham gia sâu (tập trung chuẩn bị kiến trúc dữ liệu lý thuyết). |
+| **Bước 3: Thiết kế Database** | - Chưa cần tham gia (hoặc phối hợp thống nhất cấu trúc dữ liệu trả về từ API). | - **Chủ trì**: Thiết kế sơ đồ quan hệ thực thể ERD.<br>- Cấu hình Row Level Security (RLS) bảo mật dữ liệu.<br>- Viết các script khởi tạo dữ liệu (SQL Migrations). |
+| **Bước 4: Lập trình Core** | - **Chủ trì**: Code Responsive Frontend UI theo bản vẽ Figma Mockup.<br>- Tích hợp State Management.<br>- Gọi các APIs kết nối dữ liệu từ phía Client. | - **Chủ trì**: Lập trình API Endpoints, Deno Edge Functions xử lý logic nặng.<br>- Kết nối cơ sở dữ liệu Supabase.<br>- Cấu hình GitHub Webhooks đồng bộ Kanban. |
+| **Bước 5: Kiểm thử chất lượng** | - Khắc phục các lỗi giao diện (CSS, responsive, vỡ khung).<br>- Sửa các lỗi logic Client-side phát hiện bởi QA/Tester. | - Sửa đổi các lỗi nghiệp vụ dữ liệu, lỗi logic API ở Server-side.<br>- Tối ưu hóa hiệu năng câu lệnh SQL/Edge Functions. |
+| **Bước 6: Triển khai & Deploy** | - Triển khai Frontend lên môi trường Vercel/Cloudflare Pages.<br>- Cấu hình DNS trỏ domain cho Client. | - Đồng bộ cấu trúc database SQL Migrations lên Supabase Cloud Production.<br>- Setup CI/CD workflow trên GitHub Actions. |
+| **Bước 7: Nghiệm thu & Bàn giao** | - Bàn giao mã nguồn Frontend.<br>- Hướng dẫn sử dụng giao diện người dùng cuối. | - Bàn giao tài khoản quản trị Supabase, Edge Functions.<br>- Viết tài liệu bàn giao kỹ thuật vận hành hệ thống. |
+
+---
+
 ## ⚡ CƠ CHẾ VẬN HÀNH & TỰ ĐỘNG HÓA SỐ HÓA
 
 ### 1. Quản lý Tiến độ bằng Slider
