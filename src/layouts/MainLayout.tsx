@@ -97,6 +97,54 @@ export default function MainLayout() {
         memberIds: p.member_ids || ['e1', 'e2', 'e3']
       }));
 
+      // Auto-sync with GitHub: Fetch repos from appdev-cmd and insert missing ones
+      try {
+        const ghResponse = await fetch('https://api.github.com/users/appdev-cmd/repos?per_page=100&sort=created&direction=desc');
+        if (ghResponse.ok) {
+          const ghRepos = await ghResponse.json();
+          const existingRepos = new Set(mappedProjects.map((p: any) => p.repo.toLowerCase()));
+          const newProjects: any[] = [];
+          
+          for (const repo of ghRepos) {
+            // Ignore template or unrelated repos if needed, here we accept all new ones
+            if (!existingRepos.has(repo.name.toLowerCase())) {
+              const newProjId = `p${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+              const newProjectObj = {
+                id: newProjId,
+                name: repo.description || repo.name,
+                repo: repo.name,
+                githubRepo: `appdev-cmd/${repo.name}`,
+                githubBranch: repo.default_branch || 'main',
+                currentStep: 1,
+                stepProgress: { "1": 100, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0 },
+                memberIds: ['e1', 'e2', 'e3']
+              };
+              
+              newProjects.push(newProjectObj);
+              
+              // Insert into Supabase
+              await supabase.from('projects').insert({
+                id: newProjectObj.id,
+                name: newProjectObj.name,
+                repo: newProjectObj.repo,
+                github_repo: newProjectObj.githubRepo,
+                github_branch: newProjectObj.githubBranch,
+                current_step: newProjectObj.currentStep,
+                step_progress: newProjectObj.stepProgress,
+                member_ids: newProjectObj.memberIds
+              });
+            }
+          }
+          
+          if (newProjects.length > 0) {
+            console.log(`Auto-synced ${newProjects.length} new repositories from GitHub.`);
+            mappedProjects.push(...newProjects);
+          }
+        }
+      } catch (ghErr) {
+        console.error('Error auto-syncing GitHub repos:', ghErr);
+      }
+
       setCustomers(custData || []);
       setProjects(mappedProjects);
       setEmployees(empData || []);
