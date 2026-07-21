@@ -423,12 +423,13 @@ const calculateDaysSince = (dateStr: string) => {
 
 const PROCESS_STEPS = [
   { step: 1, name: 'Khảo sát', role: 'PO / PM', tasks: ['Họp kick-off', 'Khảo sát nghiệp vụ', 'Lập đặc tả SRS', 'Thống nhất phạm vi'] },
-  { step: 2, name: 'Thiết kế UI', role: 'UI/UX Designer', tasks: ['Vẽ Wireframe', 'Mockup Figma', 'Prototype tương tác', 'Design System'] },
-  { step: 3, name: 'Database', role: 'Lead Dev', tasks: ['Vẽ sơ đồ ERD', 'Cấu hình RLS', 'SQL Migrations'] },
-  { step: 4, name: 'Lập trình', role: 'Developers', tasks: ['Boilerplate Git', 'Frontend UI', 'Backend APIs', 'GitHub Webhooks'] },
-  { step: 5, name: 'Kiểm thử', role: 'Tester / QA', tasks: ['Unit Tests', 'Manual Testing', 'Ghi nhận Bugs', 'Fix & Re-test'] },
-  { step: 6, name: 'Deploy', role: 'DevOps / Lead', tasks: ['Hosting Deploy', 'Domain & SSL', 'CI/CD pipeline'] },
-  { step: 7, name: 'Nghiệm thu', role: 'PM / Client', tasks: ['Nghiệm thu UAT', 'Tài liệu hướng dẫn', 'Bàn giao hạ tầng'] }
+  { step: 2, name: 'Setup Repo', role: 'PM / Lead Dev', tasks: ['Khởi tạo Git repo', 'Setup Project Board', 'Branch Protection', 'Phân quyền cộng tác'] },
+  { step: 3, name: 'Thiết kế UI', role: 'UI/UX Designer', tasks: ['Vẽ Wireframe', 'Mockup Stich', 'Prototype Stich', 'Design System'] },
+  { step: 4, name: 'Frontend', role: 'Frontend Dev', tasks: ['Boilerplate project', 'Sinh code AI Studio', 'Routing & Static State', 'Localhost testing'] },
+  { step: 5, name: 'DB & Backend', role: 'Backend Dev', tasks: ['Thiết kế ERD', 'Cấu hình RLS Supabase', 'Lập trình Edge Functions', 'GitHub Webhooks'] },
+  { step: 6, name: 'Kiểm thử', role: 'Tester / QA', tasks: ['Unit Tests', 'Manual Testing', 'Ghi nhận Bugs', 'Fix & Re-test'] },
+  { step: 7, name: 'Deploy', role: 'DevOps / Lead', tasks: ['Hosting Deploy', 'Domain & SSL', 'CI/CD pipeline'] },
+  { step: 8, name: 'Nghiệm thu', role: 'PM / Client', tasks: ['Nghiệm thu UAT', 'Tài liệu hướng dẫn', 'Bàn giao hạ tầng'] }
 ];
 
 export default function Dashboard() {
@@ -557,9 +558,9 @@ export default function Dashboard() {
   const vercelUrl = currentProjectObj.vercelUrl || '';
   const currentStep = currentProjectObj.currentStep || 4;
 
-  const progressMap = currentProjectObj.stepProgress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0 };
+  const progressMap = currentProjectObj.stepProgress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0 };
   const overallProgress = Math.round(
-    Object.values(progressMap).reduce((sum, val) => sum + val, 0) / 7
+    Object.values(progressMap).reduce((sum, val) => sum + val, 0) / 8
   );
 
   const linkedCustomer = customers.find(c => c.id === currentProjectObj.customerId);
@@ -641,7 +642,7 @@ export default function Dashboard() {
   const handleProgressChange = (stepNum: number, value: number) => {
     const updated = projects.map(p => {
       if (p.id === selectedProject.id) {
-        const oldProgress = p.stepProgress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0 };
+        const oldProgress = p.stepProgress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0 };
         return {
           ...p,
           stepProgress: {
@@ -736,13 +737,13 @@ export default function Dashboard() {
             <div>
               <h3 className="text-[15px] font-bold text-txt-primary flex items-center gap-2">
                 <Workflow size={16} className="text-primary-500" />
-                <span>Tiến trình Quy trình phát triển</span>
-              </h3>
-              <p className="text-[12px] text-txt-muted mt-1">Dự án đang ở bước nào trong quy trình 7 giai đoạn. Nhấp vào các bước để cập nhật trạng thái.</p>
-            </div>
-            <span className="text-[11px] font-bold text-primary-400 bg-primary-500/10 px-2.5 py-1 rounded-full border border-primary-500/20 shrink-0 self-start sm:self-center">
-              Bước {currentStep}/7: {PROCESS_STEPS[currentStep - 1]?.name || 'Nghiệm thu'}
-            </span>
+              <span>Tiến trình Quy trình phát triển</span>
+            </h3>
+            <p className="text-[12px] text-txt-muted mt-1">Dự án đang ở bước nào trong quy trình 8 giai đoạn. Nhấp vào các bước để cập nhật trạng thái.</p>
+          </div>
+          <span className="text-[11px] font-bold text-primary-400 bg-primary-500/10 px-2.5 py-1 rounded-full border border-primary-500/20 shrink-0 self-start sm:self-center">
+            Bước {currentStep}/8: {PROCESS_STEPS[currentStep - 1]?.name || 'Nghiệm thu'}
+          </span>
           </div>
 
           {/* Stepper Timeline (Horizontal Layout) */}

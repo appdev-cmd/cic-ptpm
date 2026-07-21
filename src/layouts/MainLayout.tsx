@@ -93,7 +93,7 @@ export default function MainLayout() {
         customerId: p.customer_id,
         goal: p.goal,
         currentStep: p.current_step || 4,
-        stepProgress: p.step_progress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0 },
+        stepProgress: p.step_progress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0 },
         memberIds: p.member_ids || ['e1', 'e2', 'e3']
       }));
 
@@ -133,7 +133,7 @@ export default function MainLayout() {
               customer_id: p.customerId || null,
               goal: p.goal,
               current_step: p.currentStep || 4,
-              step_progress: p.stepProgress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0 },
+              step_progress: p.stepProgress || { "1": 100, "2": 100, "3": 100, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0 },
               member_ids: p.memberIds || ['e1', 'e2', 'e3']
             });
           if (error) throw error;
