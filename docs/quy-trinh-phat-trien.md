@@ -78,3 +78,9 @@ graph TD
 * **Thêm bớt thành viên động**: PM có thể phân bổ nhanh các lập trình viên thực tế trong trung tâm (Nguyễn Quốc Anh, Phan Thành Nam, Trần Đình Thuận) vào dự án thông qua giao diện trượt từ phải (Slide Panel).
 * **Resource Workload**: Biểu đồ thanh hiển thị trực quan khối lượng công việc được giao của từng người (số việc đã làm xong trên tổng số việc) giúp PM điều chỉnh khối lượng công việc hợp lý.
 * **Theo dõi hoạt động Git ở Sidebar**: Dashboard tích hợp sẵn Widget chia 2 tab **Commits** và **Pull Requests** ở cột bên phải, giúp PM theo dõi trực tiếp dòng chảy code mà không cần rời phần mềm.
+
+---
+
+## 🤝 QUY TRÌNH PHỐI HỢP VIBE CODING VỚI AI VÀ NHÓM PHÁT TRIỂN
+*Để xem chi tiết cách phối hợp vận hành thực tế hàng ngày, phân chia ranh giới module, và chiến lược Git tránh conflict code giữa Quốc Anh, Nam và Thuận, vui lòng tham khảo:*
+👉 [Tài liệu Quy trình Phối hợp Vibe Coding](file:///d:/QuocAnh/2026/01.Project/cic-ptpm/docs/quy-trinh-phoi-hop-vibe-coding.md)

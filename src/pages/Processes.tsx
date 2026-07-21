@@ -209,7 +209,13 @@ PM cập nhật tiến độ của từng bước qua thanh trượt (%) hoặc 
 Khi lập trình viên push code hoặc mở PR, webhook sẽ được gửi về Edge Function trên Supabase, xác thực mã băm HMAC-SHA256 và tự động cập nhật tiến độ nhiệm vụ tương ứng.
 
 ### 3. Phân bổ Nhân sự & Workload
-PM gán động nhân sự (Anh, Nam, Thuận) vào dự án bằng Slide Panel. Biểu đồ Workload hiển thị trực quan tỷ lệ việc đã xong trên tổng số việc được giao của từng người. Lịch sử code (Commits & PRs) được theo dõi realtime theo dạng tab ở sidebar.`
+PM gán động nhân sự (Anh, Nam, Thuận) vào dự án bằng Slide Panel. Biểu đồ Workload hiển thị trực quan tỷ lệ việc đã xong trên tổng số việc được giao của từng người. Lịch sử code (Commits & PRs) được theo dõi realtime theo dạng tab ở sidebar.
+
+---
+
+## 🤝 QUY TRÌNH PHỐI HỢP VIBE CODING VỚI AI VÀ NHÓM PHÁT TRIỂN
+*Để xem chi tiết cách phối hợp vận hành thực tế hàng ngày, phân chia ranh giới module, và chiến lược Git tránh conflict code giữa Quốc Anh, Nam và Thuận, vui lòng tham khảo:*
+👉 [Tài liệu Quy trình Phối hợp Vibe Coding](file:///d:/QuocAnh/2026/01.Project/cic-ptpm/docs/quy-trinh-phoi-hop-vibe-coding.md)`
     },
     {
       id: 'p2',
