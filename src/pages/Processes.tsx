@@ -58,36 +58,37 @@ export default function Processes() {
         {
           id: 'step-2',
           title: 'Thiết kế Trải nghiệm người dùng (UI/UX)',
-          role: 'UI/UX Designer',
+          role: 'UI/UX Designer / PM',
           duration: '1 - 3 tuần',
           tasks: [
             'Phác thảo Wireframe & vẽ sơ đồ luồng User Flow',
-            'Thiết kế giao diện chi tiết High-Fidelity trên Figma',
-            'Xây dựng Prototype tương tác thử nghiệm',
-            'Thiết lập Design System (màu sắc HSL, cỡ chữ, spacing)'
+            'Thiết kế giao diện chi tiết High-Fidelity trên Google Stich',
+            'Xây dựng Prototype tương tác thử nghiệm trên Google Stich',
+            'Bàn giao link dự án thiết kế cho nhóm lập trình'
           ]
         },
         {
           id: 'step-3',
-          title: 'Thiết kế Database & Kiến trúc',
-          role: 'Lead Developer / Architect',
-          duration: '3 - 5 ngày',
+          title: 'Lập trình Frontend (AI Generation)',
+          role: 'Frontend Developer',
+          duration: '1 - 3 tuần',
           tasks: [
-            'Thiết kế sơ đồ quan hệ thực thể (ERD)',
-            'Cấu hình phân quyền bảo mật Row Level Security (RLS)',
-            'Viết script di cư cơ sở dữ liệu SQL (Migration)'
+            'Sinh mã giao diện tự động bằng Google AI Studio từ thiết kế Google Stich',
+            'Xây dựng giao diện Responsive Client-side (React/Vite)',
+            'Cấu hình định tuyến (routing) và state management tĩnh',
+            'Kiểm tra hoạt động giao diện trên localhost và đưa lên Git'
           ]
         },
         {
           id: 'step-4',
-          title: 'Lập trình Frontend & Backend',
-          role: 'Frontend / Backend Developers',
-          duration: '2 - 6 tuần',
+          title: 'Thiết kế Database & Backend',
+          role: 'Backend Developer / AI Agent',
+          duration: '2 - 4 tuần',
           tasks: [
-            'Cấu hình mã nguồn Git và boilerplate dự án',
-            'Xây dựng giao diện Responsive Client-side theo Figma',
-            'Viết các API backend / Edge Functions xử lý logic nặng',
-            'Tích hợp GitHub Webhook đồng bộ hóa tự động lên Kanban Board'
+            'Thiết kế sơ đồ quan hệ thực thể (ERD) bằng Antigravity/Claude',
+            'Cấu hình Row Level Security (RLS) bảo mật dữ liệu trên Supabase',
+            'Lập trình API Endpoints & Deno Edge Functions',
+            'Ghép nối dữ liệu động hoàn chỉnh với Frontend của bước trước'
           ]
         },
         {
@@ -133,12 +134,11 @@ export default function Processes() {
 ## 📅 SƠ ĐỒ TIẾN TRÌNH 7 GIAI ĐOẠN (PROJECT LIFECYCLE)
 
 Quy trình phát triển sản phẩm của Trung tâm PTPM được quản lý tập trung qua **7 Giai đoạn nghiệp vụ**. Tiến độ của từng bước được PM điều chỉnh trực tiếp và hệ thống tự động tính toán **Tiến độ tổng thể** dựa trên trung bình cộng của cả 7 bước.
-
 \`\`\`mermaid
 graph TD
-    A["1. Khảo sát & Phân tích (PO/PM)"] --> B["2. Thiết kế UI/UX (Designer)"]
-    B --> C["3. Thiết kế Database (Lead Dev)"]
-    C --> D["4. Lập trình Core (Developers)"]
+    A["1. Khảo sát & Phân tích (PO/PM)"] --> B["2. Thiết kế UI/UX (Designer/PM)"]
+    B --> C["3. Lập trình Frontend (Google AI Studio)"]
+    C --> D["4. Thiết kế DB & Backend (Antigravity/Claude/Supabase)"]
     D --> E["5. Kiểm thử chất lượng (QA/Tester)"]
     E --> F["6. Triển khai & Deploy (DevOps/Lead)"]
     F --> G["7. Nghiệm thu & Bàn giao (PM/Client)"]
