@@ -9,7 +9,11 @@ import {
   Cpu,
   ClipboardList
 } from 'lucide-react';
-import { supabase } from '../utils/supabaseClient';
+import customerSeedMapRaw from '../data/customersRichSeed.json';
+import customerSeedArrayRaw from '../data/customersArraySeed.json';
+
+const customerSeedMap = customerSeedMapRaw as Record<string, any>;
+const customerSeedArray = customerSeedArrayRaw as any[];
 
 interface Project {
   id: string;
@@ -35,6 +39,15 @@ interface Customer {
   email: string;
   phone: string;
   address: string;
+  taxCode?: string;
+  website?: string;
+  representative?: string;
+  contactPerson?: string;
+  industry?: string;
+  rating?: string;
+  businessStatus?: string;
+  type?: string;
+  notes?: string;
 }
 
 interface Employee {
@@ -145,7 +158,51 @@ export default function MainLayout() {
         console.error('Error auto-syncing GitHub repos:', ghErr);
       }
 
-      setCustomers(custData || []);
+      const dbList = custData || [];
+      const mappedCustomers = dbList.map((c: any) => {
+        const nameTrimmed = (c.name || '').trim();
+        const nameUpper = nameTrimmed.toUpperCase();
+        const codeUpper = (c.code || '').trim().toUpperCase();
+        const simplified = nameUpper.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Z0-9]/g, ' ').trim();
+
+        let seed = customerSeedMap[nameUpper] || 
+                   customerSeedMap[codeUpper] || 
+                   customerSeedMap[c.tax_code || ''] || 
+                   customerSeedMap[simplified];
+
+        if (!seed || !seed.taxCode) {
+          const found = customerSeedArray.find((item: any) => 
+            item.taxCode && (
+              item.name.toUpperCase().includes(nameUpper) || 
+              nameUpper.includes(item.name.toUpperCase()) ||
+              (c.code && item.code.toUpperCase().includes(codeUpper))
+            )
+          );
+          if (found) seed = found;
+        }
+
+        seed = seed || {};
+
+        return {
+          id: c.id,
+          name: c.name || seed.name || 'Khách hàng',
+          code: c.code || seed.code || 'KH',
+          email: c.email || seed.email || '',
+          phone: c.phone || seed.phone || '',
+          address: c.address || seed.address || '',
+          taxCode: c.tax_code || c.taxCode || seed.taxCode || '',
+          website: seed.website || c.website || '',
+          representative: seed.representative || c.representative || '',
+          contactPerson: seed.contactPerson || c.contact_person || c.contactPerson || '',
+          industry: seed.industry || c.industry || '',
+          rating: seed.rating || c.rating || 'Standard',
+          businessStatus: seed.businessStatus || c.business_status || 'Đang hoạt động',
+          type: seed.type || c.type || 'Chủ đầu tư',
+          notes: seed.notes || c.notes || ''
+        };
+      });
+
+      setCustomers(mappedCustomers);
       setProjects(mappedProjects);
       setEmployees(empData || []);
     } catch (err: any) {
@@ -209,7 +266,14 @@ export default function MainLayout() {
         if (!oldC || JSON.stringify(oldC) !== JSON.stringify(c)) {
           const { error } = await supabase
             .from('customers')
-            .upsert(c);
+            .upsert({
+              id: c.id,
+              name: c.name,
+              code: c.code,
+              email: c.email,
+              phone: c.phone,
+              address: c.address
+            });
           if (error) throw error;
         }
       }

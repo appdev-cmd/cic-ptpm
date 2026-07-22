@@ -66,6 +66,7 @@ const PROJECT_PROGRESS_DATA: Record<string, { progress: number; status: string; 
   'cic-nova': { progress: 50, status: 'Đang triển khai', bugs: 5 },
   'cic-vicem': { progress: 75, status: 'Đang triển khai', bugs: 4 },
   'qlda-ddht-ht-selfhost': { progress: 40, status: 'Đang triển khai', bugs: 7 },
+  'qlda-ddcn-ht': { progress: 65, status: 'Đang triển khai', bugs: 5 },
   'cic-ai': { progress: 55, status: 'Đang triển khai', bugs: 6 }
 };
 

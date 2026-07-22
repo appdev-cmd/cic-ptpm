@@ -336,6 +336,31 @@ const PROJECT_EXTRA_DATA: Record<string, ProjectExtraData> = {
       { day: 'Ngày 6', Ideal: 25, Actual: 30 },
       { day: 'Ngày 7', Ideal: 19, Actual: null },
     ]
+  },
+  'qlda-ddcn-ht': {
+    client: 'Sở Tài nguyên và Môi trường',
+    goal: 'Hệ thống Quản lý Dự án Đất đai & Chi nhánh - Hạ tầng (DDCN-HT).',
+    progress: 65,
+    status: 'Đang triển khai',
+    defaultTechStack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'GIS'],
+    kpis: {
+      sprint: 'Sprint 3',
+      sprintDetail: 'Còn lại 5 ngày',
+      spCompleted: '35 / 50 SP',
+      spDetail: 'Tỉ lệ đạt: 70%',
+      tasksRemaining: '8 Nhiệm vụ',
+      tasksDetail: '4 việc đang thực hiện',
+      bugsRemaining: '5 Lỗi',
+      bugsDetail: '1 lỗi nghiêm trọng'
+    },
+    burndownData: [
+      { day: 'Ngày 1', Ideal: 50, Actual: 50 },
+      { day: 'Ngày 2', Ideal: 42, Actual: 48 },
+      { day: 'Ngày 3', Ideal: 35, Actual: 40 },
+      { day: 'Ngày 4', Ideal: 28, Actual: 32 },
+      { day: 'Ngày 5', Ideal: 20, Actual: 22 },
+      { day: 'Ngày 6', Ideal: 12, Actual: null },
+    ]
   }
 };
 
